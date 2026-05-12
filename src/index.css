@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  /* This is the new way to add your custom colors in v4 */
+  --color-brand-dark: #093C5D;
+  --color-brand-medium: #3B7597;
+  --color-brand-cyan: #6FD1D7;
+  --color-brand-teal: #5DF8D8;
+
+  /* Adding custom fonts if you want them */
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* Global Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-brand-dark text-white antialiased;
+    margin: 0;
+  }
+}
+
+@keyframes scan {
+  from { top: 0%; }
+  to { top: 100%; }
+}
+
+/* Add this to allow the animation to work */
+.animate-\[scan_4s_linear_infinite\] {
+  animation: scan 4s linear infinite;
+}
+
+.animate-\[scan_6s_linear_infinite\] {
+  animation: scan 6s linear infinite;
+}
+
+@layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 1px var(--color-brand-teal);
+  }
+  
+  .timeline-gradient {
+    background: linear-gradient(to bottom, transparent, var(--color-brand-teal), var(--color-brand-cyan), transparent);
+  }
+}
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(500%); } /* Increased range for video aspect ratio */
+}
+
+/* Ensure the utility works in Tailwind v4 */
+.animate-\[scan_3s_linear_infinite\] {
+  animation: scan 3s linear infinite;
+}
